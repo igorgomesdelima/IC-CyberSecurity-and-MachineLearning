@@ -176,6 +176,31 @@ X_scaled = scaler.fit_transform(features_nf)
 
 df_scaled = pd.DataFrame(X_scaled, columns=features_nf.columns)
 
+
+# 🚀 TCC: Application of Foundation Models in Intrusion Detection Systems (IDS)
+## Módulo 2: Engenharia de Atributos, Captura de Tráfego e Rotulagem via NFStream
+
+> **Autor:** Igor Gomes de Lima  
+> **Repositório Pessoal / Módulo 2**
+
+---
+
+### 📂 Estrutura dos Notebooks do Módulo 2
+
+O Módulo 2 foi estruturado de forma modular para cobrir todo o ciclo de vida dos dados de rede, desde a captura/processamento bruto até a validação comparativa com o dataset de referência (CICIDS2017/UNB):
+
+1. **`modulo2_captura_nfstream.ipynb`**
+   * *Objetivo:* Captura de tráfego de rede ao vivo da interface local ou processamento inicial via NFStream.
+   
+2. **`modulo2_nfstream_pcap_cicids2017.ipynb`**
+   * *Objetivo:* Aplicação do NFStream sobre arquivos `.pcap` brutos (ex: tráfego de quinta-feira) gerando os fluxos bidirecionais e estatísticos.
+
+3. **`modulo2_rotulagem.ipynb`** (Utiliza o script `rotulagem_cicids2017.py`)
+   * *Objetivo:* Reconstrução autônoma da coluna `Label` utilizando as janelas de tempo, endereços IP de atacantes/vítimas e tratamento de NAT do firewall descritos na documentação oficial da UNB.
+
+4. **`modulo2_analise_comparativa.ipynb`**
+   * *Objetivo:* Cruzamento estatístico descritivo e de frequência entre a base gerada localmente (`NFStream + Rotulagem`) e os arquivos CSV originais da CICIDS2017, incluindo testes de aderência (Qui-Quadrado) e gráficos de distribuição.
+
 print(f"✅ Normalização concluída!")
 print(f"• Forma do dataset normalizado: {df_scaled.shape}")
 print(f"• Exemplo das primeiras 5 linhas normalizadas:\n", df_scaled.head())
